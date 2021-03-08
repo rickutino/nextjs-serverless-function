@@ -1,13 +1,16 @@
 // import Head from 'next/head'
 
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { Flex, Image, Button, Text } from '@chakra-ui/core'
 import Input from '../components/Input'
+import axios from 'axios'
 
 export default function Home() {
   const [ email, setEmail ] = useState('');
-  function handleSignUpToNewsletter() {
+  function handleSignUpToNewsletter(event: FormEvent) {
+    event.preventDefault();
 
+    axios.post('/api/subscribe', { email })
   }
 
   return (
@@ -29,10 +32,10 @@ export default function Home() {
         width="100%" 
         maxW="400px"
       >
-        <Image marginBottom={8} src="/rocketseat.svg" alt="Rocketseat" />
+        <Image marginBottom={8} src="/vercel.svg" alt="Vercel" />
 
         <Text textAlign="center" fontSize="sm" color="gray.400" marginBottom={2}>
-          Assine a newsletter da Rocketseat e receba os melhores conteúdos sobre programação!
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         </Text>
 
         <Input
@@ -50,7 +53,7 @@ export default function Home() {
           marginTop={6}
           _hover={{ backgroundColor: 'purple.600' }}
         >
-          INSCREVER
+          登録
         </Button>
       </Flex>
     </Flex>
